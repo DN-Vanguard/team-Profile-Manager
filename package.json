@@ -1,0 +1,29 @@
+{
+  "name": "team-profile-manager",
+  "version": "1.0.0",
+  "description": "takes in information about employees on a given team, then generates an HTML webpage that displays summaries for each person",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DN-Vanguard/team-Profile-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DN-Vanguard/team-Profile-Manager/issues"
+  },
+  "homepage": "https://github.com/DN-Vanguard/team-Profile-Manager#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
