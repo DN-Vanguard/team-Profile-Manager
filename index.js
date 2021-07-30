@@ -128,8 +128,11 @@ const internQuestions = [ //Interns questions
         }
     }
 ];
+
 // Stored team members array
 let teamMembers = [];
+// Global string to store card HTML
+let cardsString = "";
 
 // Ask the user what team member they would like to add OR finish process
 const askforNextTeamMember = () => {
