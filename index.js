@@ -39,7 +39,7 @@ const managerQuestions = [ //Manager Questions
         name: "email",
         validate: (input) => {
             if(input !== "" && /@/.test(input)) return true;
-            return "Please enter a full valid Email.";
+            return "Please enter a valid Email.";
         }
     },
     {
@@ -59,7 +59,7 @@ const engineerQuestions = [ //Engineers Questions
         name: "name",
         validate: (input) => {
             if(input !== "" && !(/\d/.test(input))) return true;
-            return "Please enter a name without numeric characters.";
+            return "Please enter a valid name.";
         }
     },
     {
@@ -77,7 +77,7 @@ const engineerQuestions = [ //Engineers Questions
         name: "email",
         validate: (input) => {
             if(input !== "" && /@/.test(input)) return true;
-            return "Please enter a full valid Email.";
+            return "Please enter a valid Email.";
         }
     },
     {
@@ -97,7 +97,7 @@ const internQuestions = [ //Interns questions
         name: "name",
         validate: (input) => {
             if(input !== "" && !(/\d/.test(input))) return true;
-            return "Please enter a name without numeric characters.";
+            return "Please enter a valid name.";
         }
     },
     {
@@ -115,7 +115,7 @@ const internQuestions = [ //Interns questions
         name: "email",
         validate: (input) => {
             if(input !== "" && /@/.test(input)) return true;
-            return "Please enter a full valid Email.";
+            return "Please enter a valid Email.";
         }
     },
     {
@@ -130,3 +130,47 @@ const internQuestions = [ //Interns questions
 ];
 // Stored team members array
 let teamMembers = [];
+
+// Ask the user what team member they would like to add OR finish process
+const askforNextTeamMember = () => {
+    return inquirer
+        .prompt(nextTeamMember)
+        .then((nextTeamMemberAnswer) => {
+
+            switch(nextTeamMemberAnswer.teamMember) {
+
+                case "Engineer":
+                    return askforEngineerInfo();
+
+                case "Intern":
+                    return askforInternInfo();
+
+                default:
+                    return;
+            }
+        });
+}
+// Command to ask engineer questions
+const askforEngineerInfo = () => {
+    return inquirer
+        .prompt(engineerQuestions)
+        .then((engineerAnswers) => {
+
+            // Add an engineer object to the team members array
+            teamMembers.push(new Engineer(engineerAnswers));
+
+            return askforNextTeamMember();
+        });
+}
+// Command to ask intern questions
+const askforInternInfo = () => {
+    return inquirer
+        .prompt(internQuestions)
+        .then((internAnswers) => {
+
+            // Add an intern object to the team members array
+            teamMembers.push(new Intern(internAnswers));
+
+            return askforNextTeamMember();
+        });
+}
